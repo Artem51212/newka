@@ -2,8 +2,10 @@
 import telebot
 from telebot import types
 import time
+import toke
 
-bot = telebot.TeleBot(token.txt)
+# file = open('token.txt', 'w')
+bot = telebot.TeleBot(toke.TOKEN)
 
 
 @bot.message_handler(commands=['start'])
@@ -13,7 +15,7 @@ def otpravlu(message):
     btn1 = types.KeyboardButton("Что такое анорексия?")
     btn2 = types.KeyboardButton("Что такое РПП?")
     markup.add(btn1, btn2)
-    bot.send_message(message.chat.id, 'Давай сначала узнаем что такое Анорексия и РПП, и с их причинами.', reply_markup=markup)
+    bot.send_message(message.chat.id, 'Давай сначала узнаем что такое Анорексия и РПП, и их причины.', reply_markup=markup)
     
 @bot.message_handler(commands=['terms'])
 def jklist_commands(message):
@@ -34,14 +36,11 @@ def darya(message):
 def pitanie(message):
     file = open('1d0d7910-63f9-4eee-a12c-d86f2e09d224.jpg', 'rb')
     bot.send_photo(message.chat.id, file)
-    # markup = telebot.types.InlineKeyboardMarkup()
-    # button1 = telebot.types.InlineKeyboardButton(text="❤️", url= 'https://t.me/pourewddcvjgdsdgbjjjj')
-    # markup.add(button1)
-    bot.send_message(message.chat.id, "Правильное питание играет ключевую роль в поддержании здоровья и благополучия. Вот несколько основных принципов правильного питания:\n\n1. Разнообразие\n\n2. Овощи и фрукты\n\n3. Зерновые продукты\n\n4. Белки\n\n5. Здоровые жиры\n\n6. Ограничение сахара и процессированных продуктов\n\n7. Умеренность\n\n8. Питьевой режим\n\nЭти принципы помогут поддерживать здоровый образ жизни и обеспечивать организм всем необходимым для правильного функционирования.")
+    bot.send_message(message.chat.id, "<b>Правильное питание играет ключевую роль в поддержании здоровья и благополучия. Вот несколько основных принципов правильного питания:</b>\n\n1. Разнообразие\n\n2. Овощи и фрукты\n\n3. Зерновые продукты\n\n4. Белки\n\n5. Здоровые жиры\n\n6. Ограничение сахара и процессированных продуктов\n\n7. Умеренность\n\n8. Питьевой режим\n\nЭти принципы помогут поддерживать здоровый образ жизни и обеспечивать организм всем необходимым для правильного функционирования.", parse_mode='html')
     markup = telebot.types.InlineKeyboardMarkup()
     button1 = telebot.types.InlineKeyboardButton(text="❤️", url= 'https://t.me/pourewddcvjgdsdgbjjjj')
     markup.add(button1)
-    bot.send_message(message.chat.id, "Если ты хотешь узнать больше о здоровом питании, то подписывайся на канал ❤️")
+    bot.send_message(message.chat.id, "Если ты хотешь узнать больше о здоровом питании, то подписывайся на канал ❤️", reply_markup=markup)
 
 @bot.message_handler(commands=['ves'])
 def pitanie(message):
@@ -53,7 +52,7 @@ def pitanie(message):
 def metod(message):
     file = open('98b889a3-a6b1-4a34-ad7c-288eb0c5fccc.jpg', 'rb')
     bot.send_photo(message.chat.id, file)
-    bot.send_message(message.chat.id, "<b>Методы лечения анорексии</b>\n\n1. Психотерапия\n\n2. Семейная терапия\n\n3. Фармакотерапия\n\n4. Питание и диетотерапия\n\n5. Медицинский наблюдательный контроль\n\n6. Поддержка группы\n\nВажно помнить, что каждый человек уникален, и нет единого подхода к лечению анорексии, который подходит всем. Врачи и специалисты по психическому здоровью должны индивидуально оценивать каждого пациента и разрабатывать наиболее подходящий план лечения.", parse_mode='html')
+    bot.send_message(message.chat.id, "<b>Методы лечения анорексии.</b>\n\n1. Психотерапия\n\n2. Семейная терапия\n\n3. Фармакотерапия\n\n4. Питание и диетотерапия\n\n5. Медицинский наблюдательный контроль\n\n6. Поддержка группы\n\nВажно помнить, что каждый человек уникален, и нет единого подхода к лечению анорексии, который подходит всем. Врачи и специалисты по психическому здоровью должны индивидуально оценивать каждого пациента и разрабатывать наиболее подходящий план лечения.", parse_mode='html')
 
 @bot.message_handler(commands=['muslu'])
 def muslu(message):
@@ -84,134 +83,6 @@ def func(message):
         but = telebot.types.InlineKeyboardButton(text="Причины РПП", callback_data="button2")
         markup.add(but)
         bot.send_message(message.chat.id, text="Расстройства пищевого поведения (РПП) - это группа психических заболеваний, связанных с неправильным отношением к еде, включающих не только анорексию, но и булимию, компульсивное переедание и другие подобные", reply_markup=markup)
-
-
-
-
-
-
-# @bot.callback_query_handler(func=lambda call: True)
-# def handle_callback_query(message):
-#     if(message.text == "Причины"):
-#         bot.send_message(message.chat.id, "frhg")
-
-
-
-# @bot.message_handler(commands=['calendar'])
-# def get_calendar(message):
-#     now = datetime.datetime.now() #Текущая дата
-#     chat_id = message.chat.id
-#     date = (now.year,now.month)
-#     current_shown_dates[chat_id] = date #Сохраним текущую дату в словарь
-#     markup = create_calendar(now.year,now.month)
-#     bot.send_message(message.chat.id, "Пожалйста, выберите дату", reply_markup=markup)
-
-
-
-
-
-
-# # Обычный режим
-# @bot.message_handler(content_types=["text"])
-# def any_msg(message):
-#     keyboard = types.InlineKeyboardMarkup()
-#     callback_button = types.InlineKeyboardButton(text="Нажми меня", callback_data="test")
-#     keyboard.add(callback_button)
-#     bot.send_message(message.chat.id, "Я – сообщение из обычного режима", reply_markup=keyboard)
-
-
-# # Инлайн-режим с непустым запросом
-# @bot.inline_handler(lambda query: len(query.query) > 0)
-# def query_text(query):
-#     kb = types.InlineKeyboardMarkup()
-#     # Добавляем колбэк-кнопку с содержимым "test"
-#     kb.add(types.InlineKeyboardButton(text="Нажми меня", callback_data="test"))
-#     results = []
-#     single_msg = types.InlineQueryResultArticle(
-#         id="1", title="Press me",
-#         input_message_content=types.InputTextMessageContent(message_text="Я – сообщение из инлайн-режима"),
-#         reply_markup=kb
-#     )
-#     results.append(single_msg)
-#     bot.answer_inline_query(query.id, results)
-
-
-# # В большинстве случаев целесообразно разбить этот хэндлер на несколько маленьких
-# @bot.callback_query_handler(func=lambda call: True)
-# def callback_inline(call):
-#     # Если сообщение из чата с ботом
-#     if call.message:
-#         if call.data == "test":
-#             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Пыщь")
-#     # Если сообщение из инлайн-режима
-#     elif call.inline_message_id:
-#         if call.data == "test":
-#             bot.edit_message_text(inline_message_id=call.inline_message_id, text="Бдыщь")    
-    
-    
-# @bot.message_handler(content_types=['text'])
-# def start(message):
-#      if message.text == 'Причины':
-#         kb = types.InlineKeyboardMarkup(row_width=1)
-#         btn = types.InlineKeyboardButton(text='KHonka 1', callback_data='btn1')
-#         btn1 = types.InlineKeyboardButton(text='KHonka 2', callback_data='btn2')
-#         kb.add(btn, btn1)
-#         bot.send_message(message.chat.id, '1', reply_markup=kb)
-
-# @bot.message_handler(commands=['start'])
-# def start(message):
-#     kb = types.InlineKeyboardMarkup(row_width=1)
-#     btn = types.InineKeyboardButton(text='KHonka 1', callback_data='btn1')
-#     btn1 = types.InlineKeyboardButton(text='KHonka 2', callback_data='btn2')
-#     kb.add(btn, btn1)
-#     bot.send_message(message.chat.id, '1', reply_markup=kb)
-
-# @bot.callback_query_handler(func=lambda callback: callback.data)
-# def check_callback_data(callback):
-#     if callback.data == 'button1':
-#         kb = types.InlineKeyboardMarkup(row_width=1)
-#         btn = types.InlineKeyboardButton(text='Генетические', callback_data='batn1')
-#         btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#         btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#         btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#         btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#         btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#         kb.add(btn, btn1, btn2, btn3 ,btn4, btn5)
-#         bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='HoBui texte', reply_markup=kb)
-#         if callback.data == 'batn1':
-#             bot.send_message(callback.message.chat.id, '1')
-
-# # Обработчик коллбэка
-# @bot.callback_query_handler(func=lambda call: True)
-# def callback_handler(call):
-#     if call.data == 'button1':
-#         bot.send_message(call.message.chat.id, "Причины бывают разные")
-#         markup = types.InlineKeyboardMarkup()
-#         item2 = types.InlineKeyboardButton("Новая кнопка", callback_data='button2')
-#         markup.add(item2)
-#         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text= "Причины бывают ра", reply_markup=markup)
-#         bot.edit_message_reply_markup(chat_id=call.message.chat.id, message_id=call.message.message_id, text= 'Причины')
-#         kb = types.InlineKeyboardMarkup(row_width=1)
-#         btn = types.InlineKeyboardButton(text='Генетические', callback_data='batn1')
-#         btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#         btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#         btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#         btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#         btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#         kb.add(btn, btn1, btn2, btn3 ,btn4, btn5)
-#         bot.send_message(call.message.chat.id, "Djn ghbxbys", reply_markup=kb)
-# # Обработчик коллбэка для новой кнопки
-# @bot.callback_query_handler(func=lambda call: call.data)
-# def callback_handler_new_button(call):
-#     if call.data == 'button2':
-#         bot.send_message(call.message.chat.id, "Ты нажал новую кнопку!")
-
-
-# @bot.message_handler(content_types=['text'])
-# def inline_key(message):
-
-
-
 
 
 
@@ -375,211 +246,8 @@ def callback_inline(call):
         next_menu7.add(back)
         bot.edit_message_text('<b>Культурные различия.</b>\n\nРПП наблюдается в разных культурах, но может проявляться по-разному в зависимости от социокультурных факторов.', call.message.chat.id, call.message.message_id, parse_mode='html' ,
                              reply_markup=next_menu7)
-        bot.send_message(call.message.chat.id, "Важно отметить, что РПП обычно вызывается комбинацией различных факторов, а не одной конкретной причиной. Поэтому для успешного лечения необходимо учитывать все эти факторы и работать с пациентом над их решениемВажно отметить, что РПП обычно вызывается комбинацией различных факторов, а не одной конкретной причиной. Поэтому для успешного лечения необходимо учитывать все эти факторы и работать с пациентом над их решением")
-    
-
-
-
-
-
-
-# РПП может быть вызвана различными факторами, включая генетические, психологические и окружающие условия. Вот некоторые из наиболее распространенных причин РПП:
-
-# 1. Генетика: исследования показывают, что у людей с РПП часто есть близкие родственники с этим расстройством, что указывает на возможное наследственное влияние.
-
-# 2. Психологические факторы: низкая самооценка, стремление к совершенству и проблемы с контролем импульсов могут способствовать развитию РПП.
-
-# 3. Социокультурные факторы: давление общества на идеальную фигуру и красоту может влиять на развитие РПП, особенно у женщин.4
-
-# 4. Травмы и стресс: травматические события или высокий уровень стресса могут быть причиной РПП у некоторых людей.97
-
-# 5. Другие психические расстройства: РПП часто сопровождается другими психическими расстройствами, такими как депрессия, тревожность и нарушения личности.uo[]
-
-# 6. Проблемы с обменом веществ: некоторые исследования показывают, что у людей с РПП может быть нарушен обмен веществ, что может влиять на их отношение к еде и весу.
-
-# 7. Культурные различия: РПП наблюдается в разных культурах, но может проявляться по-разному в зависимости от социокультурных факторов.
-
-# Важно отметить, что РПП обычно вызывается комбинацией различных факторов, а не одной конкретной причиной. Поэтому для успешного лечения необходимо учитывать все эти факторы и работать с пациентом над их решением
-
-
-
-# @bot.message_handler(commands=['list'])
-# def list_commands(message):
-#     bot.send_message(message.chat.id, 'это список команд которые тебе доступны:\n\n/question - если есь какие то вопросы и нужна помощь')
-
-# @bot.message_handler(commands=['five'])
-# def gdnsl(message):
-#     bot.send_message(message.chat.id, "поздравляю с днем рождения брат, чтоб всегда все было хорошо, чтоб все было как ты хочешь, чтоб была удача и благополучие, больше оптимизма, позитива и вдохновения. чтоб была любовь и радость, чтоб не сломила любая гадость. Пусть все твои желания сбываются, пусть все будет так, как ты захочешь.\n\nЖмякай /six")
-
-
-# @bot.message_handler(content_types=['text'])
-# def inline_key(a):
-#     if a.text == "Inline_menu":
-#         mainmenu = types.InlineKeyboardMarkup()
-#         key1 = types.InlineKeyboardButton(text='Кнопка 1', callback_data='key1')
-#         key2 = types.InlineKeyboardButton(text='Кнопка 2', callback_data='key2')
-#         mainmenu.add(key1, key2)
-#         bot.send_message(a.chat.id, 'Это главное меню!', reply_markup=mainmenu)
-
-# @bot.callback_query_handler(func=lambda call: True)
-# def callback_inline(call):
-#     if call.data == "mainmenu":
-#         mainmenu = types.InlineKeyboardMarkup()
-#         key1 = types.InlineKeyboardButton(text='Кнопка 1', callback_data='key1')
-#         key2 = types.InlineKeyboardButton(text='Кнопка 2', callback_data='key2')
-#         mainmenu.add(key1, key2)
-#         bot.edit_message_reply_markup(call.message.chat.id, call.message.message_id, reply_markup=mainmenu)
-#     elif call.data == "key1":
-#         next_menu = types.InlineKeyboardMarkup()
-#         key3 = types.InlineKeyboardButton(text='Кнопка 3', callback_data='key3')
-#         back = types.InlineKeyboardButton(text='Назад', callback_data='mainmenu')
-#         next_menu.add(key3, back)
-#         bot.edit_message_text('Это меню уровня 2, для кнопки1!', call.message.chat.id, call.message.message_id,
-#                               reply_markup=next_menu)
-#     elif call.data == "key2":
-#         next_menu2 = types.InlineKeyboardMarkup()
-#         key4 = types.InlineKeyboardButton(text='Кнопка 4', callback_data='key4')
-#         back = types.InlineKeyboardButton(text='Назад', callback_data='mainmenu')
-#         next_menu2.add(key4, back)
-#         bot.edit_message_text('Это меню уровня 2, для кнопки2!', call.message.chat.id, call.message.message_id,
-#                               reply_markup=next_menu2)
-
-
-
-# @bot.callback_query_handler(func=lambda callback: True)
-# def check_callback_data(callback):
-#     if callback.data == "button1":
-#         kb = types.InlineKeyboardMarkup(row_width=1)
-#         btn = types.InlineKeyboardButton(text='Генетические', callback_data='batn1')
-#         btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#         btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#         btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#         btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#         btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#         kb.add(btn, btn1, btn2, btn3 ,btn4, btn5)
-#         markup1 = telebot.types.InlineKeyboardMarkup()
-#         knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#         markup1.add(knp)
-#         bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Вероятность болезни определяется несколькими генами, регулирующими нейрохимические факторы пищевых расстройств поведения. К настоящему моменту изучен ген НТR2A, кодирующий серотониновый рецептор, и ген BDNF, влияющий на активность гипоталамуса. Существует генетическая детерминированность определенных черт характера, предрасполагающих к заболеванию.\n/exit', reply_markup=markup1)
-#         if callback.data == 'batn2':
-#             markup2 = telebot.types.InlineKeyboardMarkup()
-#             knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#             markup2.add(knp)
-#             bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Пищевое поведение чаще нарушено у людей с избыточной массой тела, ожирением и ранним наступлением менархе. В основе лежит дисфункция нейромедиаторов (серотонина, дофамина, норадреналина) и чрезмерная выработка лептина – гормона, снижающего аппетит.\n/exit', reply_markup=markup2)
-#         elif callback.data == 'batn3':
-#             markup3 = telebot.types.InlineKeyboardMarkup()
-#             knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#             markup3.add(knp)
-#             bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Важную роль в развитии заболевания играет отношение родителей и других родственников к питанию, лишнему весу и худобе. Анорексия чаще встречается в семьях, где у родственников имеется подтвержденный диагноз заболевания, где демонстрируется пренебрежение едой, отказы принимать пищу.\n/exit', reply_markup=markup3)
-#         elif callback.data == 'batn4':
-#             markup4 = telebot.types.InlineKeyboardMarkup()
-#             knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#             markup4.add(knp)
-#             bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Расстройству более подвержены лица с обсессивно-компульсивным типом личности. Стремление к худобе, голодание, изнуряющие нагрузки поддерживаются перфекционизмом, низкой самооценкой, неуверенностью, тревожностью и мнительностью.\n/exit', reply_markup=markup4)
-#         elif callback.data == 'batn5':
-#             markup5 = telebot.types.InlineKeyboardMarkup()
-#             knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#             markup5.add(knp)
-#             bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='В индустриально развитых странах худоба провозглашается одним из главных критериев красоты женщины. Идеалы стройного тела пропагандируются на разных уровнях, формируя у молодежи стремление похудеть любым способом.\n/exit', reply_markup=markup5)
-#         elif callback.data == 'batn5':
-#             markup6 = telebot.types.InlineKeyboardMarkup()
-#             knp = types.InlineKeyboardButton(text='exit', callback_data='back_menu')
-#             markup6.add(knp)
-#             bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Пусковым фактором анорексии может стать смерть близкого человека, сексуальное или физическое насилие. В подростковом и молодом возрасте причиной является неуверенность в будущем, невозможность достижения желаемых целей. Процесс похудения замещает сферы жизни, в которых пациенту не удается реализовать себя.\n/exit', reply_markup=markup6)
-
-
-# @bot.callback_query_handler(func=lambda callback: True)
-# def check_callback_dat(callback):
-#     if callback.data == "back_menu":
-#         markup = telebot.types.InlineKeyboardMarkup()
-#         btn = telebot.types.InlineKeyboardButton(text="Генетические", callback_data="button1")
-#         btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#         btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#         btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#         btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#         btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#         markup.add(btn, btn1, btn2, btn3, btn4, btn5)
-#         bot.send_message(callback.message.chat.id, f"Анорексия - это расстройство пищевого поведения, характеризующееся намеренным отказом от пищи, стремлением к крайне низкому весу и искажением своего собственного телосознания. Люди, страдающие анорексией, обычно ощущают сильный страх набирать вес или принимать пищу.\n\nТакже у анорексии бывают разные причины", reply_markup=markup)
-
-
-# @bot.message_handler(commands=['exit'])
-# def check_call(message):
-#         markup = telebot.types.InlineKeyboardMarkup()
-#         btn = telebot.types.InlineKeyboardButton(text="Генетические", callback_data="button1")
-#         btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#         btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#         btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#         btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#         btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#         markup.add(btn, btn1, btn2, btn3, btn4, btn5)
-#         bot.send_message(message.chat.id, f"Анорексия - это расстройство пищевого поведения, характеризующееся намеренным отказом от пищи, стремлением к крайне низкому весу и искажением своего собственного телосознания. Люди, страдающие анорексией, обычно ощущают сильный страх набирать вес или принимать пищу.\n\nТакже у анорексии бывают разные причины", reply_markup=markup)
-
-# @bot.callback_query_handler(func=lambda callback: callback.data == 'back_menu')
-# def check_callback_dat(callback):
-#     markup = types.InlineKeyboardMarkup()
-#     btn = types.InlineKeyboardButton(text="Генетические", callback_data="button1")
-#     btn1 = types.InlineKeyboardButton(text='Биологические', callback_data='batn2')
-#     btn2 = types.InlineKeyboardButton(text='Микросоциальные', callback_data='batn3')
-#     btn3 = types.InlineKeyboardButton(text='Личностный', callback_data='batn4')
-#     btn4 = types.InlineKeyboardButton(text='Культурные', callback_data='batn5')
-#     btn5 = types.InlineKeyboardButton(text='Стрессовые', callback_data='batn6')
-#     markup.add(btn, btn1, btn2, btn3, btn4, btn5)
-#     bot.send_message(callback.message.chat.id, "Анорексия - это расстройство пищевого поведения, характеризующееся намеренным отказом от пищи, стремлением к крайне низкому весу и искажением своего собственного телосознания. Люди, страдающие анорексией, обычно ощущают сильный страх набирать вес или принимать пищу.\n\nТакже у анорексии бывают разные причины", reply_markup=markup)
-
-
-
-
-
-
-# @bot.callback_query_handler(func=lambda callback: callback.data)
-# def check_callback_dat(callback):
-
-# @bot.message_handler(content_types=['text'])
-# def start(message):
-#      if message.text == 'Генетические':
-#         kb = types.InlineKeyboardMarkup(row_width=1)
-#         btn = types.InlineKeyboardButton(text='KHonka 1', callback_data='btn1')
-#         btn1 = types.InlineKeyboardButton(text='KHonka 2', callback_data='btn2')
-#         kb.add(btn, btn1)
-#         bot.send_message(message.chat.id, '1', reply_markup=kb)
-
-    
-# @bot.callback_query_handler(func=lambda callback: callback.data)
-# def check_callback_dat(callback):
-#     if callback.data == "batn1":
-#         bot.edit_message_text(chat_id=callback.message.chat.id, message_id=callback.message.id, text='Причины бывают разные и их очень много')
-#     elif callback.data =='batn2':
-#         bot.send_message(message.chat.id, text='кнопка 2')
-#     elif callback.data =='batn2':
-#         bot.send_message(message.chat.id, text='кнопка 3')
-#     elif callback.data =='batn2':
-#         bot.send_message(message.chat.id, text='кнопка 4')
-#     elif callback.data =='batn2':
-#         bot.send_message(message.chat.id, text='кнопка 5')
-#     elif callback.data =='batn2':
-#         bot.send_message(message.chat.id, text='кнопка 6')
-
+        bot.send_message(call.message.chat.id, "Важно отметить, что РПП обычно вызывается комбинацией различных факторов, а не одной конкретной причиной. Поэтому для успешного лечения необходимо учитывать все эти факторы и работать с пациентом над их решением.")
+        bot.send_message(call.message.chat.id, "Для последующего ознакомления с ботом, ознакомься с меню.\n👇")
 
 
 bot.polling(non_stop=True)
-
-# Генетические. Вероятность болезни определяется несколькими генами, регулирующими нейрохимические факторы пищевых расстройств поведения. К настоящему моменту изучен ген НТR2A, кодирующий серотониновый рецептор, и ген BDNF, влияющий на активность гипоталамуса. Существует генетическая детерминированность определенных черт характера, предрасполагающих к заболеванию.
-#   Биологические. Пищевое поведение чаще нарушено у людей с избыточной массой тела, ожирением и ранним наступлением менархе. В основе лежит дисфункция нейромедиаторов (серотонина, дофамина, норадреналина) и чрезмерная выработка лептина – гормона, снижающего аппетит.
-#   Микросоциальные. Важную роль в развитии заболевания играет отношение родителей и других родственников к питанию, лишнему весу и худобе. Анорексия чаще встречается в семьях, где у родственников имеется подтвержденный диагноз заболевания, где демонстрируется пренебрежение едой, отказы принимать пищу.
-#   Личностный. Расстройству более подвержены лица с обсессивно-компульсивным типом личности. Стремление к худобе, голодание, изнуряющие нагрузки поддерживаются перфекционизмом, низкой самооценкой, неуверенностью, тревожностью и мнительностью.
-#   Культурные. В индустриально развитых странах худоба провозглашается одним из главных критериев красоты женщины. Идеалы стройного тела пропагандируются на разных уровнях, формируя у молодежи стремление похудеть любым способом.
-#   Стрессовые. Пусковым фактором анорексии может стать смерть близкого человека, сексуальное или физическое насилие. В подростковом и молодом возрасте причиной является неуверенность в будущем, невозможность достижения желаемых целей. Процесс похудения замещает сферы жизни, в которых пациенту не удается реализовать себя.}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
